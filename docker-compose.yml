@@ -42,6 +42,9 @@ services:
       - backend_data:/app/data
     networks:
       - InconectNet
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     labels:
       - traefik.enable=true
       - traefik.http.routers.mundodosbots-api.rule=Host(`api.mundodosbots.com.br`)
