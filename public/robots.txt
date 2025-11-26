@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mundodosbots.com.br/sitemap.xml

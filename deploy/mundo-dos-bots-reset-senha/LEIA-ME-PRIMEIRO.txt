@@ -1,0 +1,300 @@
+================================================================================
+        🚀 MUNDO DOS BOTS - PACOTE DE DEPLOY
+        Versão 2.0 - Com Reset de Senha
+================================================================================
+
+📦 CONTEÚDO DESTE PACOTE:
+
+✅ Frontend React (Build de produção)
+✅ Backend Node.js/Express (API completa)
+✅ Schema SQL (Banco de dados)
+✅ Nova funcionalidade: Reset de Senha
+✅ Configuração Nginx
+✅ Script de instalação automática
+✅ Documentação completa
+
+================================================================================
+        🆕 NOVIDADES DESTA VERSÃO
+================================================================================
+
+✨ RESET DE SENHA:
+   - Página de recuperação de senha
+   - Validação de token seguro
+   - Tokens com expiração de 1 hora
+   - Indicador de força da senha
+   - Design moderno e responsivo
+
+🔐 SEGURANÇA:
+   - Tokens criptográficos únicos
+   - Senhas com hash bcrypt
+   - Proteção contra ataques
+
+================================================================================
+        📋 INSTALAÇÃO RÁPIDA (RECOMENDADO)
+================================================================================
+
+1️⃣  FAZER UPLOAD DOS ARQUIVOS:
+    - Envie todos os arquivos para seu servidor
+    - Via FTP, SFTP ou SCP
+
+2️⃣  CONECTAR AO SERVIDOR:
+    ssh usuario@mundodosbots.com.br
+
+3️⃣  EXECUTAR INSTALAÇÃO AUTOMÁTICA:
+    cd /caminho/para/os/arquivos
+    sudo bash install.sh
+
+4️⃣  SEGUIR AS INSTRUÇÕES NA TELA:
+    - Digite a senha do MySQL quando solicitado
+    - Configure SSL se desejar
+    - Aguarde a conclusão
+
+✅ PRONTO! Seu site estará no ar!
+
+================================================================================
+        📖 INSTALAÇÃO MANUAL (DETALHADA)
+================================================================================
+
+Para instalação manual passo a passo, consulte:
+👉 README-DEPLOY.md
+
+Este arquivo contém:
+- Pré-requisitos detalhados
+- Passo a passo completo
+- Configurações avançadas
+- Troubleshooting
+- Backup e segurança
+
+================================================================================
+        🗄️ CONFIGURAÇÃO DO BANCO DE DADOS
+================================================================================
+
+⚠️ IMPORTANTE: Execute estes comandos no MySQL:
+
+1. Criar o banco (se for instalação nova):
+   CREATE DATABASE IF NOT EXISTS mundo_dos_bots;
+   USE mundo_dos_bots;
+   SOURCE schema.sql;
+
+2. ⭐ OBRIGATÓRIO - Adicionar tabela de reset de senha:
+   SOURCE add_password_reset_table.sql;
+
+3. Verificar:
+   SHOW TABLES;
+   DESCRIBE password_reset_tokens;
+
+================================================================================
+        🔑 CREDENCIAIS PADRÃO
+================================================================================
+
+ADMIN DO SISTEMA:
+📧 Email: admin@mundodosbots.com.br
+🔒 Senha: admin123
+
+⚠️ IMPORTANTE: 
+   Altere a senha imediatamente após o primeiro login!
+   Acesse: https://mundodosbots.com.br/admin/login
+
+================================================================================
+        🌐 URLs IMPORTANTES
+================================================================================
+
+Frontend (Site):     https://mundodosbots.com.br
+Backend (API):       https://mundodosbots.com.br/api
+Admin (Painel):      https://mundodosbots.com.br/admin/login
+Reset de Senha:      https://mundodosbots.com.br/forgot-password
+
+================================================================================
+        ⚙️ CONFIGURAÇÃO NECESSÁRIA
+================================================================================
+
+VARIÁVEIS DE AMBIENTE (.env):
+----------------------------------
+PORT=5000
+NODE_ENV=production
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=sua_senha_mysql
+DB_NAME=mundo_dos_bots
+
+JWT_SECRET=gere_uma_chave_forte
+JWT_EXPIRES_IN=24h
+
+FRONTEND_URL=https://mundodosbots.com.br
+
+================================================================================
+        🧪 TESTAR A INSTALAÇÃO
+================================================================================
+
+1️⃣  FRONTEND:
+    Abra: https://mundodosbots.com.br
+    Deve carregar a página principal
+
+2️⃣  API:
+    Acesse: https://mundodosbots.com.br/api/health
+    Deve retornar: "OK"
+
+3️⃣  LOGIN:
+    Acesse: https://mundodosbots.com.br/admin/login
+    Faça login com as credenciais padrão
+
+4️⃣  RESET DE SENHA:
+    1. Na tela de login, clique em "Esqueceu sua senha?"
+    2. Digite um email cadastrado
+    3. Em desenvolvimento, o token aparecerá na tela
+    4. Acesse o link e defina uma nova senha
+
+================================================================================
+        📊 MONITORAMENTO
+================================================================================
+
+VER STATUS:
+-----------
+pm2 status
+pm2 logs mundodosbots-api
+sudo systemctl status nginx
+
+VER LOGS:
+---------
+pm2 logs mundodosbots-api --lines 100
+tail -f /var/log/nginx/mundodosbots_access.log
+tail -f /var/log/nginx/mundodosbots_error.log
+
+REINICIAR SERVIÇOS:
+-------------------
+pm2 restart mundodosbots-api
+sudo systemctl restart nginx
+
+================================================================================
+        🔄 ATUALIZAÇÃO FUTURA
+================================================================================
+
+Para atualizar o site:
+
+1. Fazer backup:
+   mysqldump -u root -p mundo_dos_bots > backup.sql
+   
+2. Parar aplicação:
+   pm2 stop mundodosbots-api
+   
+3. Substituir arquivos
+   
+4. Executar migrações SQL (se houver)
+   
+5. Reiniciar:
+   pm2 restart mundodosbots-api
+
+================================================================================
+        🛡️ SEGURANÇA E BACKUP
+================================================================================
+
+FIREWALL:
+---------
+sudo ufw allow 22     # SSH
+sudo ufw allow 80     # HTTP
+sudo ufw allow 443    # HTTPS
+sudo ufw enable
+
+BACKUP AUTOMÁTICO:
+------------------
+Configure backup diário do banco de dados
+(Instruções detalhadas no README-DEPLOY.md)
+
+SSL/HTTPS:
+----------
+sudo certbot --nginx -d mundodosbots.com.br
+
+================================================================================
+        🆘 PROBLEMAS COMUNS
+================================================================================
+
+❌ Erro 502 Bad Gateway:
+   → pm2 restart mundodosbots-api
+
+❌ Erro de conexão com banco:
+   → Verificar .env e credenciais MySQL
+   → sudo systemctl restart mysql
+
+❌ Reset de senha não funciona:
+   → Verificar se a tabela foi criada:
+   → SOURCE add_password_reset_table.sql
+
+❌ Permissões negadas:
+   → sudo chown -R www-data:www-data /var/www/mundodosbots
+   → sudo chmod -R 755 /var/www/mundodosbots
+
+================================================================================
+        📚 DOCUMENTAÇÃO COMPLETA
+================================================================================
+
+📄 README-DEPLOY.md      → Guia completo de instalação
+📄 nginx.conf            → Configuração do Nginx
+📄 schema.sql            → Schema completo do banco
+📄 add_password_reset_table.sql → Tabela de reset de senha
+🔧 install.sh            → Script de instalação automática
+
+================================================================================
+        📞 ESTRUTURA DE ARQUIVOS
+================================================================================
+
+mundo-dos-bots-reset-senha/
+├── index.html                    # Frontend
+├── static/                       # CSS, JS, mídia
+├── api/                          # Backend
+│   ├── server.js
+│   ├── routes/
+│   │   ├── auth.js              # ⭐ Atualizado
+│   │   └── ...
+│   ├── config/
+│   ├── middleware/
+│   └── package.json
+├── schema.sql                    # Schema completo
+├── add_password_reset_table.sql  # ⭐ Nova tabela
+├── nginx.conf                    # Configuração Nginx
+├── install.sh                    # Instalação automática
+├── README-DEPLOY.md              # Documentação completa
+└── LEIA-ME-PRIMEIRO.txt         # Este arquivo
+
+================================================================================
+        ✅ CHECKLIST DE INSTALAÇÃO
+================================================================================
+
+□ Servidor preparado (Ubuntu/Debian)
+□ Node.js 18+ instalado
+□ MySQL instalado
+□ Nginx instalado
+□ Arquivos enviados ao servidor
+□ Banco de dados criado
+□ Tabela password_reset_tokens criada
+□ Backend configurado (.env)
+□ PM2 instalado e rodando
+□ Nginx configurado
+□ SSL/HTTPS configurado
+□ Firewall configurado
+□ Senha padrão alterada
+□ Backup configurado
+□ Testes realizados
+
+================================================================================
+        🎉 SUCESSO!
+================================================================================
+
+Após a instalação, seu site estará online em:
+👉 https://mundodosbots.com.br
+
+Painel administrativo:
+👉 https://mundodosbots.com.br/admin/login
+
+Nova funcionalidade de reset de senha:
+👉 https://mundodosbots.com.br/forgot-password
+
+================================================================================
+
+Para suporte técnico, consulte README-DEPLOY.md
+
+Mundo dos Bots - Transformando comunicação com IA 🤖
+
+================================================================================
+
+

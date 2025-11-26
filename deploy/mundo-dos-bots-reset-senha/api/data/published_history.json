@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1755118574318",
+    "content": {
+      "facebook": "📱 Blog Post com ID Auto-incrementado\n\nEste post foi criado sem enviar ID - será auto-incrementado automaticamente!...\n\n🔗 Leia mais: https://mundodosbots.com/blog/auto-incrementado\n\n#MundoDosBots #Chatbots #Automação",
+      "instagram": "🤖 Blog Post com ID Auto-incrementado\n\nEste post foi criado sem enviar ID - será auto-incrementado automaticamente!...\n\n📖 Link na bio\n\n#MundoDosBots #Chatbots #Automação #IA",
+      "linkedin": "💼 Blog Post com ID Auto-incrementado\n\nEste post foi criado sem enviar ID - será auto-incrementado automaticamente!...\n\n🔗 Confira o artigo completo: https://mundodosbots.com/blog/auto-incrementado\n\n#MundoDosBots #Chatbots #Automação #Inovação #Tecnologia"
+    },
+    "platforms": [
+      "facebook",
+      "instagram",
+      "linkedin"
+    ],
+    "tags": [
+      "Auto-increment",
+      "Teste",
+      "API"
+    ],
+    "campaign": "blog_automation",
+    "language": "pt",
+    "metadata": {
+      "blog_post_id": 1,
+      "title": "Blog Post com ID Auto-incrementado",
+      "url": "https://mundodosbots.com/blog/auto-incrementado"
+    },
+    "status": "published",
+    "published_at": "2025-08-13T20:56:14.318Z",
+    "results": {
+      "facebook": {
+        "success": true,
+        "post_id": "facebook_1755118575384",
+        "message": "Post publicado com sucesso no facebook",
+        "published_at": "2025-08-13T20:56:15.384Z"
+      },
+      "instagram": {
+        "success": true,
+        "post_id": "instagram_1755118576390",
+        "message": "Post publicado com sucesso no instagram",
+        "published_at": "2025-08-13T20:56:16.390Z"
+      },
+      "linkedin": {
+        "success": true,
+        "post_id": "linkedin_1755118577391",
+        "message": "Post publicado com sucesso no linkedin",
+        "published_at": "2025-08-13T20:56:17.392Z"
+      }
+    }
+  }
+]

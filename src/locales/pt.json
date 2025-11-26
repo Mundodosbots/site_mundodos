@@ -1,0 +1,491 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "add": "Adicionar",
+    "search": "Buscar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "contact": "Contato",
+    "about": "Sobre",
+    "services": "Serviços",
+    "blog": "Blog",
+    "franchise": "Franquia",
+    "workWithUs": "Trabalhe Conosco"
+  },
+  "header": {
+    "home": "Início",
+    "landingPage": "Landing Page",
+    "solutions": "Nossas Soluções",
+    "blog": "Blog",
+    "about": "Sobre Nós",
+    "contact": "Contato",
+    "franchise": "Franquia",
+    "workWithUs": "Trabalhe Conosco",
+    "admin": "Admin",
+    "logout": "Sair",
+    "language": "Idioma",
+    "solutionsByObjective": "Por Objetivo",
+    "solutionsBySector": "Por Setor",
+    "solutionsByProduct": "Por Produto",
+    "increaseSales": "Aumentar Vendas",
+    "improveService": "Melhorar Atendimento",
+    "automateMarketing": "Automatizar Marketing",
+    "reduceCosts": "Reduzir Custos Operacionais",
+    "ecommerce": "E-commerce",
+    "realEstate": "Imobiliárias",
+    "clinics": "Clínicas e Consultórios",
+    "education": "Educação",
+    "industry": "Indústria",
+    "whatsappChatbots": "Chatbots para WhatsApp",
+    "websiteChatbots": "Chatbots para Sites",
+    "appointmentAutomation": "Automação de Agendamentos",
+    "leadQualification": "Qualificação de Leads"
+  },
+  "footer": {
+    "company": "Empresa",
+    "services": "Serviços",
+    "support": "Suporte",
+    "contact": "Contato",
+    "address": "Endereço",
+    "phone": "Telefone",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp",
+    "socialMedia": "Redes Sociais",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Seu e-mail",
+    "newsletterButton": "Inscrever",
+    "copyright": "© 2024 Mundo dos Bots. Todos os direitos reservados.",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço"
+  },
+  "home": {
+    "meta": {
+      "title": "Mundo dos Bots - Transforme sua Comunicação com Inteligência Artificial",
+      "description": "Transforme sua comunicação com inteligência artificial. Soluções completas em chatbots para WhatsApp, sites e automação de marketing. Fale com um especialista hoje!"
+    },
+    "hero": {
+      "title": "Transforme sua Comunicação com a Inteligência Artificial dos Nossos Bots",
+      "subtitle": "Automatize atendimento, aumente vendas e qualifique leads com chatbots inteligentes para WhatsApp e sites.",
+      "cta": "Fale com um Especialista",
+      "learnMore": "Saiba Mais"
+    },
+    "services": {
+      "title": "Nossas Soluções Principais",
+      "subtitle": "Oferecemos soluções completas em automação para transformar seu negócio",
+      "viewAll": "Ver Todas as Soluções",
+      "chatbots": {
+        "title": "Chatbots Inteligentes",
+        "description": "Automação completa do atendimento com IA avançada para WhatsApp e sites."
+      },
+      "marketing": {
+        "title": "Automação de Marketing",
+        "description": "Campanhas automatizadas que convertem leads em clientes de forma eficiente."
+      },
+      "leads": {
+        "title": "Qualificação de Leads",
+        "description": "Sistema inteligente para qualificar e nutrir leads automaticamente."
+      }
+    },
+    "blog": {
+      "title": "Últimos Posts do Blog",
+      "subtitle": "Fique por dentro das novidades em chatbots e automação",
+      "readMore": "Ler Mais",
+      "viewAll": "Ver Todos os Posts",
+      "posts": {
+        "post1": {
+          "title": "Como os Chatbots Estão Revolucionando o Atendimento ao Cliente",
+          "category": "Tecnologia",
+          "date": "15 Jan 2024",
+          "excerpt": "Descubra como a inteligência artificial está transformando a forma como as empresas atendem seus clientes..."
+        },
+        "post2": {
+          "title": "5 Estratégias de Automação para Aumentar suas Vendas",
+          "category": "Marketing",
+          "date": "12 Jan 2024",
+          "excerpt": "Aprenda as melhores práticas para implementar automação de marketing e aumentar suas conversões..."
+        },
+        "post3": {
+          "title": "Franquia Digital: O Futuro dos Negócios",
+          "category": "Empreendedorismo",
+          "date": "10 Jan 2024",
+          "excerpt": "Conheça as vantagens de investir em uma franquia digital e como começar seu próprio negócio..."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "O que Nossos Clientes Dizem",
+      "subtitle": "Resultados reais de empresas que confiaram na Mundo dos Bots",
+      "testimonial1": {
+        "name": "Maria Silva",
+        "company": "E-commerce Tech",
+        "text": "O chatbot da Mundo dos Bots aumentou nossas vendas em 40% e reduziu o tempo de resposta de 2 horas para 2 minutos!"
+      },
+      "testimonial2": {
+        "name": "João Santos",
+        "company": "Clínica Saúde",
+        "text": "A automação de agendamentos revolucionou nossa clínica. Agora atendemos 3x mais pacientes sem aumentar a equipe."
+      },
+      "testimonial3": {
+        "name": "Ana Costa",
+        "company": "Imobiliária Prime",
+        "text": "Graças aos chatbots, qualificamos leads 24/7 e fechamos 60% mais negócios no primeiro mês de implementação."
+      }
+    },
+    "franchise": {
+      "title": "Seja um Franqueado de Sucesso",
+      "subtitle": "Invista em um modelo de negócio digital com baixo investimento e alta lucratividade. Faça parte da revolução dos chatbots!",
+      "cta": "Quero ser um Franqueado"
+    }
+  },
+  "solutions": {
+    "hero": {
+      "title": "Soluções Personalizadas",
+      "subtitle": "Chatbots inteligentes para seu objetivo específico"
+    },
+    "benefits": {
+      "title": "Benefícios",
+      "subtitle": "Por que escolher nossas soluções"
+    },
+    "features": {
+      "title": "Funcionalidades",
+      "subtitle": "Tudo que você precisa para crescer"
+    },
+    "cta": {
+      "title": "Pronto para começar?",
+      "subtitle": "Entre em contato e descubra como podemos ajudar seu negócio",
+      "button": "Falar com Especialista"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Login Administrativo",
+      "username": "Usuário",
+      "password": "Senha",
+      "login": "Entrar",
+      "error": "Usuário ou senha incorretos"
+    },
+    "dashboard": {
+      "title": "Painel Administrativo",
+      "home": "Início",
+      "blog": "Blog",
+      "categories": "Categorias",
+      "siteSettings": "Configurações do Site",
+      "solutionsObjective": "Soluções por Objetivo",
+      "solutionsSector": "Soluções por Setor",
+      "solutionsProduct": "Soluções por Produto",
+      "logout": "Sair",
+      "manageHome": "Gerenciar Página Inicial",
+      "manageCategories": "Gerenciar Categorias",
+      "manageUsers": "Gerenciar Usuários",
+      "recentBlogPosts": "Posts Recentes do Blog",
+      "date": "Data",
+      "actions": "Ações",
+      "activeUsers": "Usuários Ativos",
+      "blogPosts": "Posts do Blog",
+      "activeChatbots": "Chatbots Ativos",
+      "monthlyVisits": "Visitas/Mês"
+    },
+    "blog": {
+      "title": "Gerenciar Blog",
+      "addPost": "Adicionar Post",
+      "editPost": "Editar Post",
+      "deletePost": "Excluir Post",
+      "titleField": "Título",
+      "contentField": "Conteúdo",
+      "categoryField": "Categoria",
+      "statusField": "Status",
+      "published": "Publicado",
+      "draft": "Rascunho",
+      "scheduled": "Agendado"
+    },
+    "solutions": {
+      "title": "Gerenciar Soluções",
+      "addSolution": "Adicionar Solução",
+      "editSolution": "Editar Solução",
+      "deleteSolution": "Excluir Solução",
+      "nameField": "Nome",
+      "slugField": "Slug",
+      "titleField": "Título",
+      "subtitleField": "Subtítulo",
+      "descriptionField": "Descrição",
+      "contentField": "Conteúdo",
+      "imageField": "Imagem",
+      "activeField": "Ativo",
+      "orderField": "Ordem"
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Estamos aqui para ajudar seu negócio a crescer",
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "company": "Empresa",
+      "message": "Mensagem",
+      "send": "Enviar Mensagem"
+    },
+    "info": {
+      "title": "Informações de Contato",
+      "address": "Endereço",
+      "phone": "Telefone",
+      "email": "E-mail",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "solutionsByProduct": {
+    "features": {
+      "title": "Funcionalidades Principais"
+    },
+    "pricing": {
+      "title": "Planos e Preços",
+      "mostPopular": "Mais Popular",
+      "month": "/mês",
+      "startNow": "Começar Agora"
+    },
+    "integrations": {
+      "title": "Integrações Disponíveis"
+    },
+    "demo": {
+      "title": "Veja em Ação",
+      "requestDemo": "Solicitar Demonstração"
+    },
+    "cta": {
+      "title": "Pronto para Começar?",
+      "subtitle": "Entre em contato agora e descubra como nossos chatbots podem transformar seus resultados.",
+      "talkToExpert": "Fale com um Especialista",
+      "talkOnWhatsApp": "Falar no WhatsApp"
+    },
+    "products": {
+      "chatbots-whatsapp": {
+        "title": "Chatbots Inteligentes para WhatsApp",
+        "subtitle": "Automatize seu WhatsApp Business com IA",
+        "description": "Transforme seu WhatsApp Business com chatbots inteligentes que qualificam leads e fecham vendas automaticamente.",
+        "features": [
+          {
+            "title": "Integração nativa com WhatsApp",
+            "description": "Integração direta com WhatsApp Business API"
+          },
+          {
+            "title": "Respostas automáticas",
+            "description": "Responda automaticamente 24/7"
+          },
+          {
+            "title": "Qualificação de leads",
+            "description": "Identifique leads qualificados automaticamente"
+          },
+          {
+            "title": "Relatórios detalhados",
+            "description": "Acompanhe performance em tempo real"
+          }
+        ],
+        "pricing": {
+          "starter": {
+            "name": "Starter",
+            "features": [
+              "Até 1000 mensagens/mês",
+              "Respostas básicas",
+              "Suporte por email",
+              "1 número WhatsApp",
+              "Relatórios básicos"
+            ]
+          },
+          "professional": {
+            "name": "Professional",
+            "features": [
+              "Mensagens ilimitadas",
+              "Qualificação de leads",
+              "Suporte prioritário",
+              "Múltiplos números",
+              "Relatórios avançados",
+              "Integração com CRM"
+            ]
+          }
+        },
+        "integrations": [
+          "WhatsApp Business API",
+          "CRMs populares",
+          "Sistemas de pagamento",
+          "E-commerce",
+          "Analytics",
+          "Email marketing"
+        ],
+        "whatsappMessage": "Olá! Quero automatizar meu WhatsApp Business com chatbots inteligentes."
+      },
+      "chatbots-sites": {
+        "title": "Chatbots para Sites e Landing Pages",
+        "subtitle": "Engaje visitantes e converta mais",
+        "description": "Mantenha seus visitantes engajados com chatbots interativos que qualificam leads e aumentam conversões.",
+        "features": [
+          {
+            "title": "Integração fácil",
+            "description": "Instale em qualquer site com um clique"
+          },
+          {
+            "title": "Design personalizado",
+            "description": "Personalize cores, textos e comportamento"
+          },
+          {
+            "title": "Qualificação de leads",
+            "description": "Capture e qualifique leads automaticamente"
+          },
+          {
+            "title": "Analytics avançado",
+            "description": "Acompanhe conversões e performance"
+          }
+        ],
+        "pricing": {
+          "starter": {
+            "name": "Starter",
+            "features": [
+              "1 chatbot",
+              "Até 1000 conversas/mês",
+              "Templates básicos",
+              "Suporte por email",
+              "Relatórios básicos"
+            ]
+          },
+          "business": {
+            "name": "Business",
+            "features": [
+              "Chatbots ilimitados",
+              "Conversas ilimitadas",
+              "Design personalizado",
+              "Suporte prioritário",
+              "Analytics avançado",
+              "Integração com CRMs"
+            ]
+          }
+        },
+        "integrations": [
+          "WordPress",
+          "Shopify",
+          "WooCommerce",
+          "CRMs populares",
+          "Google Analytics",
+          "Facebook Pixel"
+        ],
+        "whatsappMessage": "Olá! Quero engajar visitantes do meu site com chatbots inteligentes."
+      },
+      "automacao-agendamentos": {
+        "title": "Automatize Seus Agendamentos",
+        "subtitle": "Agende automaticamente e nunca perca uma oportunidade",
+        "description": "Automatize seus agendamentos com chatbots inteligentes que organizam sua agenda e qualificam leads.",
+        "features": [
+          {
+            "title": "Integração com calendários",
+            "description": "Sincronize com Google Calendar e Outlook"
+          },
+          {
+            "title": "Confirmação automática",
+            "description": "Confirme agendamentos automaticamente"
+          },
+          {
+            "title": "Lembretes inteligentes",
+            "description": "Reduza faltas com lembretes automáticos"
+          },
+          {
+            "title": "Reagendamento fácil",
+            "description": "Permita reagendamento via WhatsApp"
+          }
+        ],
+        "pricing": {
+          "basic": {
+            "name": "Basic",
+            "features": [
+              "1 calendário",
+              "Até 50 agendamentos/mês",
+              "Lembretes básicos",
+              "Suporte por email",
+              "Relatórios básicos"
+            ]
+          },
+          "premium": {
+            "name": "Premium",
+            "features": [
+              "Calendários ilimitados",
+              "Agendamentos ilimitados",
+              "Lembretes avançados",
+              "Suporte prioritário",
+              "Relatórios detalhados",
+              "Integração com CRMs"
+            ]
+          }
+        },
+        "integrations": [
+          "Google Calendar",
+          "Outlook",
+          "Calendly",
+          "CRMs populares",
+          "Sistemas de pagamento",
+          "Email marketing"
+        ],
+        "whatsappMessage": "Olá! Quero automatizar os agendamentos da minha empresa."
+      },
+      "qualificacao-leads": {
+        "title": "Qualifique Leads Automaticamente",
+        "subtitle": "Transforme leads frios em oportunidades quentes",
+        "description": "Qualifique seus leads automaticamente com chatbots inteligentes que identificam oportunidades reais de venda.",
+        "features": [
+          {
+            "title": "Qualificação automática",
+            "description": "Identifique leads qualificados automaticamente"
+          },
+          {
+            "title": "Score de leads",
+            "description": "Pontue leads baseado em comportamento"
+          },
+          {
+            "title": "Segmentação inteligente",
+            "description": "Segmente leads automaticamente"
+          },
+          {
+            "title": "Relatórios detalhados",
+            "description": "Acompanhe performance em tempo real"
+          }
+        ],
+        "pricing": {
+          "starter": {
+            "name": "Starter",
+            "features": [
+              "Até 500 leads/mês",
+              "Qualificação básica",
+              "Relatórios simples",
+              "Suporte por email",
+              "1 campanha"
+            ]
+          },
+          "enterprise": {
+            "name": "Enterprise",
+            "features": [
+              "Leads ilimitados",
+              "Qualificação avançada",
+              "Analytics completo",
+              "Suporte prioritário",
+              "Campanhas ilimitadas",
+              "Integração com CRMs"
+            ]
+          }
+        },
+        "integrations": [
+          "CRMs populares",
+          "Email marketing",
+          "Redes sociais",
+          "Google Analytics",
+          "Facebook Ads",
+          "LinkedIn Ads"
+        ],
+        "whatsappMessage": "Olá! Quero qualificar meus leads automaticamente com IA."
+      }
+    }
+  }
+}
