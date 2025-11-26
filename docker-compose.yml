@@ -2,10 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    image: mundo-dos-bots-backend:latest
+    image: mundodosbots/lp_mundodos:backend
     restart: unless-stopped
     environment:
       - NODE_ENV=production
@@ -79,12 +76,7 @@ services:
         failure_action: rollback
 
   frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        REACT_APP_API_URL: https://api.mundodosbots.com.br/api
-    image: mundo-dos-bots-frontend:latest
+    image: mundodosbots/lp_mundodos:frontend
     restart: unless-stopped
     depends_on:
       - backend
