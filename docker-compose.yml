@@ -7,48 +7,55 @@ services:
       dockerfile: Dockerfile
     image: mundo-dos-bots-backend:latest
     restart: unless-stopped
-    ports:
-      - "5000:5000"
     environment:
       - NODE_ENV=production
-      - PORT=5000
-      # Banco de Dados - configurar via stack.env
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT:-3306}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
+      - PORT=6010
+      # Banco de Dados
+      - DB_HOST=104.254.130.194
+      - DB_PORT=3306
+      - DB_USER=mundodos_mundo_dos_bots
+      - DB_PASSWORD=!mV8xuENT%X*
+      - DB_NAME=mundodos_mundo_dos_bots
       # JWT
-      - JWT_SECRET=${JWT_SECRET}
-      - JWT_EXPIRE=${JWT_EXPIRE:-7d}
+      - JWT_SECRET=b9350900c274684a573a6268857088fd24168383a442f96d91f925139aa60321
+      - JWT_EXPIRE=7d
       # CORS
-      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost}
+      - CORS_ORIGIN=https://mundodosbots.com.br
       # Rate Limiting
-      - RATE_LIMIT_WINDOW=${RATE_LIMIT_WINDOW:-15}
-      - RATE_LIMIT_MAX=${RATE_LIMIT_MAX:-1000}
+      - RATE_LIMIT_WINDOW=15
+      - RATE_LIMIT_MAX=1000
       # Upload
-      - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE:-5242880}
-      # Pabbly (opcional)
-      - PABBLY_API_KEY=${PABBLY_API_KEY:-}
-      - PABBLY_BASE_URL=${PABBLY_BASE_URL:-https://api.pabbly.com/v1}
-      - PABBLY_WEBHOOK_URL=${PABBLY_WEBHOOK_URL:-}
-      - PABBLY_AUTO_SCHEDULE_ENABLED=${PABBLY_AUTO_SCHEDULE_ENABLED:-false}
-      - PABBLY_AUTO_SCHEDULE_TIME=${PABBLY_AUTO_SCHEDULE_TIME:-09:00}
-      - PABBLY_AUTO_SCHEDULE_TIMEZONE=${PABBLY_AUTO_SCHEDULE_TIMEZONE:-America/Sao_Paulo}
-      - PABBLY_FACEBOOK_ENABLED=${PABBLY_FACEBOOK_ENABLED:-false}
-      - PABBLY_INSTAGRAM_ENABLED=${PABBLY_INSTAGRAM_ENABLED:-false}
-      - PABBLY_LINKEDIN_ENABLED=${PABBLY_LINKEDIN_ENABLED:-false}
-      - PABBLY_TWITTER_ENABLED=${PABBLY_TWITTER_ENABLED:-false}
-      - PABBLY_DEFAULT_CAMPAIGN=${PABBLY_DEFAULT_CAMPAIGN:-mundodosbots}
-      - PABBLY_BLOG_CAMPAIGN=${PABBLY_BLOG_CAMPAIGN:-blog_automation}
-      - PABBLY_PROMOTIONAL_CAMPAIGN=${PABBLY_PROMOTIONAL_CAMPAIGN:-promotional}
+      - MAX_UPLOAD_SIZE=5242880
+      # Pabbly
+      - PABBLY_API_KEY=
+      - PABBLY_BASE_URL=https://api.pabbly.com/v1
+      - PABBLY_WEBHOOK_URL=https://mundodosbots.com.br/api/pabbly/webhook
+      - PABBLY_AUTO_SCHEDULE_ENABLED=false
+      - PABBLY_AUTO_SCHEDULE_TIME=09:00
+      - PABBLY_AUTO_SCHEDULE_TIMEZONE=America/Sao_Paulo
+      - PABBLY_FACEBOOK_ENABLED=false
+      - PABBLY_INSTAGRAM_ENABLED=false
+      - PABBLY_LINKEDIN_ENABLED=false
+      - PABBLY_TWITTER_ENABLED=false
+      - PABBLY_DEFAULT_CAMPAIGN=mundodosbots
+      - PABBLY_BLOG_CAMPAIGN=blog_automation
+      - PABBLY_PROMOTIONAL_CAMPAIGN=promotional
     volumes:
       - backend_uploads:/app/uploads
       - backend_data:/app/data
     networks:
-      - mundo-dos-bots-network
+      - InconectNet
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mundodosbots-api.rule=Host(`api.mundodosbots.com.br`)
+      - traefik.http.routers.mundodosbots-api.entrypoints=websecure
+      - traefik.http.routers.mundodosbots-api.priority=1
+      - traefik.http.routers.mundodosbots-api.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.mundodosbots-api.service=mundodosbots-api
+      - traefik.http.services.mundodosbots-api.loadbalancer.server.port=6010
+      - traefik.http.services.mundodosbots-api.loadbalancer.passHostHeader=true
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/health"]
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:6010/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -76,17 +83,24 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:5000/api}
+        REACT_APP_API_URL: https://api.mundodosbots.com.br/api
     image: mundo-dos-bots-frontend:latest
     restart: unless-stopped
-    ports:
-      - "80:80"
     depends_on:
       - backend
     networks:
-      - mundo-dos-bots-network
+      - InconectNet
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mundodosbots.rule=Host(`mundodosbots.com.br`)
+      - traefik.http.routers.mundodosbots.entrypoints=websecure
+      - traefik.http.routers.mundodosbots.priority=1
+      - traefik.http.routers.mundodosbots.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.mundodosbots.service=mundodosbots
+      - traefik.http.services.mundodosbots.loadbalancer.server.port=4010
+      - traefik.http.services.mundodosbots.loadbalancer.passHostHeader=true
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4010/"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -110,13 +124,11 @@ services:
         failure_action: rollback
 
 networks:
-  mundo-dos-bots-network:
-    driver: overlay
-    attachable: true
+  InconectNet:
+    external: true
 
 volumes:
   backend_uploads:
     driver: local
   backend_data:
     driver: local
-

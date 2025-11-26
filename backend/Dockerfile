@@ -20,11 +20,11 @@ COPY . .
 RUN mkdir -p uploads data
 
 # Expor porta
-EXPOSE 5000
+EXPOSE 6010
 
 # Variáveis de ambiente padrão
 ENV NODE_ENV=production
-ENV PORT=5000
+ENV PORT=6010
 
 # Comando para iniciar a aplicação
 CMD ["node", "server.js"]
