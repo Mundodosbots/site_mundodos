@@ -37,3 +37,4 @@ EXPOSE 80
 # Comando padrão do Nginx
 CMD ["nginx", "-g", "daemon off;"]
 
+
