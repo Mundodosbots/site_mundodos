@@ -25,6 +25,9 @@ RUN npm run build
 # Stage 2: Servir com Nginx
 FROM nginx:alpine
 
+# Instalar wget para healthcheck
+RUN apk add --no-cache wget
+
 # Copiar build do stage anterior
 COPY --from=builder /app/build /usr/share/nginx/html
 
@@ -36,5 +39,4 @@ EXPOSE 4010
 
 # Comando padrão do Nginx
 CMD ["nginx", "-g", "daemon off;"]
-
 
