@@ -1,0 +1,63 @@
+# Dependências
+node_modules
+npm-debug.log
+
+# Build (será gerado no container)
+build
+dist
+
+# Arquivos de ambiente (não copiar para imagem)
+.env
+.env.*
+!.env.example
+.env.production.local
+
+# Logs
+*.log
+logs
+
+# Arquivos de desenvolvimento
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentação
+README.md
+*.md
+DEPLOY*.md
+
+# Testes
+test
+tests
+__tests__
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+coverage
+
+# Scripts de desenvolvimento
+*.ps1
+*.sh
+!docker-entrypoint.sh
+
+# Backend (não necessário no frontend)
+backend
+
+# Arquivos temporários
+tmp
+temp
+*.tmp
+
+# Docker
+docker-compose*.yml
+Dockerfile
+.dockerignore
+

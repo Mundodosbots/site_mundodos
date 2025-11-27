@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  backend:
+    image: mundodosbots/lp_mundodos:backend
+    container_name: mundo-dos-bots-backend-local
+    restart: unless-stopped
+    ports:
+      - "6010:6010"
+    environment:
+      - NODE_ENV=production
+      - PORT=6010
+      # Banco de Dados
+      - DB_HOST=100.106.31.54
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=844d0e7f1dd86eb9c148e798ed56d960
+      - DB_NAME=site_mundodosbots
+      # JWT
+      - JWT_SECRET=b9350900c274684a573a6268857088fd24168383a442f96d91f925139aa60321
+      - JWT_EXPIRE=7d
+      # CORS - Permitir localhost
+      - CORS_ORIGIN=http://localhost:4010
+      # Rate Limiting
+      - RATE_LIMIT_WINDOW=15
+      - RATE_LIMIT_MAX=1000
+      # Upload
+      - MAX_UPLOAD_SIZE=5242880
+      # Pabbly
+      - PABBLY_API_KEY=
+      - PABBLY_BASE_URL=https://api.pabbly.com/v1
+      - PABBLY_WEBHOOK_URL=http://localhost:6010/api/pabbly/webhook
+      - PABBLY_AUTO_SCHEDULE_ENABLED=false
+      - PABBLY_AUTO_SCHEDULE_TIME=09:00
+      - PABBLY_AUTO_SCHEDULE_TIMEZONE=America/Sao_Paulo
+      - PABBLY_FACEBOOK_ENABLED=false
+      - PABBLY_INSTAGRAM_ENABLED=false
+      - PABBLY_LINKEDIN_ENABLED=false
+      - PABBLY_TWITTER_ENABLED=false
+      - PABBLY_DEFAULT_CAMPAIGN=mundodosbots
+      - PABBLY_BLOG_CAMPAIGN=blog_automation
+      - PABBLY_PROMOTIONAL_CAMPAIGN=promotional
+    volumes:
+      - backend_uploads_local:/app/uploads
+      - backend_data_local:/app/data
+    networks:
+      - mundo-dos-bots-local
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:6010/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    image: mundodosbots/lp_mundodos:frontend-local
+    container_name: mundo-dos-bots-frontend-local
+    restart: unless-stopped
+    ports:
+      - "4010:4010"
+    depends_on:
+      - backend
+    networks:
+      - mundo-dos-bots-local
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4010/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  mundo-dos-bots-local:
+    driver: bridge
+
+volumes:
+  backend_uploads_local:
+    driver: local
+  backend_data_local:
+    driver: local
+

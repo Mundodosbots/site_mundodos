@@ -1,0 +1,56 @@
+# Dependências
+node_modules
+npm-debug.log
+# package-lock.json é necessário para npm ci - NÃO excluir
+
+# Arquivos de ambiente (não copiar para imagem)
+.env
+.env.*
+!.env.example
+env.production
+env.production.local
+env.production.host
+
+# Logs
+*.log
+logs
+
+# Arquivos de desenvolvimento
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentação
+README.md
+*.md
+
+# Testes
+test
+tests
+__tests__
+*.test.js
+*.spec.js
+coverage
+
+# Scripts de desenvolvimento
+setup.sh
+*.ps1
+
+# Uploads e dados (serão volumes)
+uploads/*
+!uploads/.gitkeep
+data/*
+!data/.gitkeep
+
+# Arquivos temporários
+tmp
+temp
+*.tmp
+

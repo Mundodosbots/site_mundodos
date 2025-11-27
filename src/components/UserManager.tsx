@@ -12,6 +12,7 @@ import {
   FiSave,
   FiRefreshCw
 } from 'react-icons/fi';
+import { API_BASE_URL } from '../utils/config';
 
 const Container = styled.div`
   padding: 2rem;
@@ -286,7 +287,7 @@ const UserManager: React.FC = () => {
   const [success, setSuccess] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  const API_BASE = API_BASE_URL;
 
   useEffect(() => {
     fetchUsers();

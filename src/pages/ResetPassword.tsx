@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FiLock, FiEye, FiEyeOff, FiCheckCircle } from 'react-icons/fi';
+import { API_BASE_URL } from '../utils/config';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -229,7 +230,7 @@ const ResetPassword: React.FC = () => {
     }
 
     try {
-      const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+      const API_BASE = API_BASE_URL;
       const response = await fetch(`${API_BASE}/auth/validate-reset-token/${token}`);
       const data = await response.json();
 
@@ -263,7 +264,7 @@ const ResetPassword: React.FC = () => {
     setLoading(true);
 
     try {
-      const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+      const API_BASE = API_BASE_URL;
       const response = await fetch(`${API_BASE}/auth/reset-password`, {
         method: 'POST',
         headers: {

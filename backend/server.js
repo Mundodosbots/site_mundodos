@@ -4,7 +4,19 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+
+// Carregar variáveis de ambiente
+// Prioridade: .env.production.local > env.production > .env
+let envFile = '.env';
+if (fs.existsSync(path.join(__dirname, '.env.production.local'))) {
+  envFile = '.env.production.local';
+} else if (fs.existsSync(path.join(__dirname, 'env.production'))) {
+  envFile = 'env.production';
+}
+
+require('dotenv').config({ path: path.join(__dirname, envFile) });
 
 const { testConnection } = require('./config/database');
 
@@ -34,15 +46,31 @@ app.use(helmet({
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:"],
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      connectSrc: ["'self'", "https://mundodosbots.com.br", "https://www.mundodosbots.com.br"]
+      connectSrc: ["'self'", "https://mundodosbots.com.br", "https://www.mundodosbots.com.br", "https://site.mundodosbots.com.br", "https://api.mundodosbots.com.br"]
     }
   }
 }));
 
 // CORS - Configuração segura por ambiente
-const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? ['https://mundodosbots.com.br', 'https://www.mundodosbots.com.br']
-  : ['http://localhost:3000', 'http://localhost:3001'];
+let allowedOrigins;
+if (process.env.NODE_ENV === 'production') {
+  // Em produção, verificar se é produção local (CORS_ORIGIN contém localhost)
+  if (process.env.CORS_ORIGIN && process.env.CORS_ORIGIN.includes('localhost')) {
+    allowedOrigins = [process.env.CORS_ORIGIN, 'http://localhost:4010'];
+  } else {
+    // Produção: usar CORS_ORIGIN da variável de ambiente e adicionar domínios padrão
+    allowedOrigins = [
+      process.env.CORS_ORIGIN || 'https://site.mundodosbots.com.br',
+      'https://mundodosbots.com.br', 
+      'https://www.mundodosbots.com.br',
+      'https://site.mundodosbots.com.br'
+    ].filter(Boolean); // Remove valores undefined/null
+  }
+} else {
+  allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:4010'];
+}
+
+console.log('🌐 CORS configurado para origens:', allowedOrigins);
 
 app.use(cors({
   origin: allowedOrigins,

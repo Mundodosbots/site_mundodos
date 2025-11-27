@@ -739,7 +739,8 @@ DO
 -- =====================================================
 
 -- Índices compostos para queries comuns
-CREATE INDEX idx_blog_status_published ON blog_posts(status, published_at DESC) WHERE status = 'published';
+-- Nota: MySQL não suporta WHERE em CREATE INDEX, então criamos índices compostos normais
+CREATE INDEX idx_blog_status_published ON blog_posts(status, published_at DESC);
 CREATE INDEX idx_blog_category_status ON blog_posts(category_id, status, published_at DESC);
 CREATE INDEX idx_contacts_status_created ON contacts(status, created_at DESC);
 CREATE INDEX idx_franchise_status_created ON franchise_applications(status, created_at DESC);

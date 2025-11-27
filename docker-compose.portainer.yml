@@ -2,37 +2,44 @@ version: '3.8'
 
 services:
   backend:
-    image: mundodosbots/lp_mundodos_site:backend
+    image: lp_mundodos_site:backend
     restart: unless-stopped
     environment:
+      # Ambiente
       - NODE_ENV=production
       - PORT=6010
+      
       # Banco de Dados - MySQL externo (nome do serviço na rede Docker)
       - DB_HOST=mysql
       - DB_PORT=3306
       - DB_USER=root
       - DB_PASSWORD=844d0e7f1dd86eb9c148e798ed56d960
       - DB_NAME=site_mundodosbots
-      # JWT
+      
+      # JWT - Segurança
       - JWT_SECRET=b9350900c274684a573a6268857088fd24168383a442f96d91f925139aa60321
       - JWT_EXPIRE=7d
-      # CORS - Aceitar requisições do site
-      - CORS_ORIGIN=https://site.mundodosbots.com.br
+      
+      # CORS - Domínio de produção
+      - CORS_ORIGIN=https://mundodosbots.com.br
+      
       # Rate Limiting
       - RATE_LIMIT_WINDOW=15
       - RATE_LIMIT_MAX=1000
+      
       # Upload
       - MAX_UPLOAD_SIZE=5242880
-      # Pabbly
-      - PABBLY_API_KEY=
+      
+      # Pabbly - Automação de Redes Sociais
+      - PABBLY_API_KEY=pc_bcc98bc453895eb2e3ca8a37b4142c17
       - PABBLY_BASE_URL=https://api.pabbly.com/v1
       - PABBLY_WEBHOOK_URL=https://mundodosbots.com.br/api/pabbly/webhook
-      - PABBLY_AUTO_SCHEDULE_ENABLED=false
+      - PABBLY_AUTO_SCHEDULE_ENABLED=true
       - PABBLY_AUTO_SCHEDULE_TIME=09:00
       - PABBLY_AUTO_SCHEDULE_TIMEZONE=America/Sao_Paulo
-      - PABBLY_FACEBOOK_ENABLED=false
-      - PABBLY_INSTAGRAM_ENABLED=false
-      - PABBLY_LINKEDIN_ENABLED=false
+      - PABBLY_FACEBOOK_ENABLED=true
+      - PABBLY_INSTAGRAM_ENABLED=true
+      - PABBLY_LINKEDIN_ENABLED=true
       - PABBLY_TWITTER_ENABLED=false
       - PABBLY_DEFAULT_CAMPAIGN=mundodosbots
       - PABBLY_BLOG_CAMPAIGN=blog_automation
@@ -79,7 +86,7 @@ services:
         failure_action: rollback
 
   frontend:
-    image: mundodosbots/lp_mundodos_site:frontend
+    image: lp_mundodos_site:frontend
     restart: unless-stopped
     depends_on:
       - backend
@@ -130,3 +137,4 @@ volumes:
     driver: local
   backend_data:
     driver: local
+

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useLanguage } from '../contexts/LanguageContext';
+import { getApiUrl } from '../utils/config';
 
 const LoginContainer = styled.div`
   min-height: 100vh;
@@ -122,7 +123,8 @@ const AdminLogin: React.FC = () => {
     setLoading(true);
 
     try {
-      const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+      const API_BASE = getApiUrl();
+      console.log('🔗 Tentando conectar com API:', API_BASE);
       const response = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: {

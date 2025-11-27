@@ -25,7 +25,7 @@ RUN npm run build
 # Stage 2: Servir com Nginx
 FROM nginx:alpine
 
-# Instalar wget para healthcheck
+# Instalar wget para healthcheck e sed para substituição de variáveis
 RUN apk add --no-cache wget
 
 # Copiar build do stage anterior
@@ -34,9 +34,13 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # Copiar configuração customizada do Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Copiar script de entrypoint para substituição de variáveis em runtime
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 # Expor porta 4010
 EXPOSE 4010
 
-# Comando padrão do Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Usar script de entrypoint ao invés de iniciar Nginx diretamente
+CMD ["/docker-entrypoint.sh"]
 
