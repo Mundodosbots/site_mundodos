@@ -8,11 +8,11 @@ services:
       - NODE_ENV=production
       - PORT=6010
       # Banco de Dados
-      - DB_HOST=104.254.130.194
+      - DB_HOST=mysql
       - DB_PORT=3306
-      - DB_USER=mundodos_mundo_dos_bots
-      - DB_PASSWORD=!mV8xuENT%X*
-      - DB_NAME=mundodos_mundo_dos_bots
+      - DB_USER=root
+      - DB_PASSWORD=844d0e7f1dd86eb9c148e798ed56d960
+      - DB_NAME=site_mundodosbots
       # JWT
       - JWT_SECRET=b9350900c274684a573a6268857088fd24168383a442f96d91f925139aa60321
       - JWT_EXPIRE=7d
@@ -87,7 +87,7 @@ services:
       - InconectNet
     labels:
       - traefik.enable=true
-      - traefik.http.routers.mundodosbots.rule=Host(`mundodosbots.com.br`)
+      - traefik.http.routers.mundodosbots.rule=Host(`site.mundodosbots.com.br`)
       - traefik.http.routers.mundodosbots.entrypoints=websecure
       - traefik.http.routers.mundodosbots.priority=1
       - traefik.http.routers.mundodosbots.tls.certresolver=letsencryptresolver

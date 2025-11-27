@@ -89,3 +89,4 @@ Se o ping funcionar mas o telnet não, o MySQL está bloqueando conexões remota
 - Verifique firewall do servidor MySQL
 - Verifique se a porta 3306 está aberta
 
+
