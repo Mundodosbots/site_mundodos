@@ -165,14 +165,14 @@ const startServer = async () => {
     // Testar conexão com banco
     await testConnection();
 
-    // Iniciar servidor
-    app.listen(PORT, () => {
+    // Iniciar servidor - escutar em 0.0.0.0 para aceitar conexões externas
+    app.listen(PORT, '0.0.0.0', () => {
       console.log('🚀 Servidor iniciado com sucesso!');
       console.log(`📍 Porta: ${PORT}`);
       console.log(`🌍 Ambiente: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`🔗 URL: http://localhost:${PORT}`);
-      console.log(`📊 Health Check: http://localhost:${PORT}/health`);
-      console.log(`🤖 Pabbly Integration: http://localhost:${PORT}/api/pabbly`);
+      console.log(`🔗 URL: http://0.0.0.0:${PORT}`);
+      console.log(`📊 Health Check: http://0.0.0.0:${PORT}/health`);
+      console.log(`🤖 Pabbly Integration: http://0.0.0.0:${PORT}/api/pabbly`);
       console.log('='.repeat(50));
     });
 
