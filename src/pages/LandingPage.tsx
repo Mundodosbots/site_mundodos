@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import emailjs from 'emailjs-com';
+import { getApiUrl } from '../utils/config';
 import { 
   FiArrowRight, 
   FiStar, 
@@ -610,38 +610,32 @@ const LandingPage: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Configurações do EmailJS
-    const serviceID = 'S4sjIZCgEdiqToWdL';
-    const templateID = 'template_ibjk6in';
-    const userID = 'IRewF75Z0EAvt6_3_sXIh';
-    
-    // Preparar dados do template
-    const templateParams = {
-      to_email: 'gelson@mundodosbots.com.br',
-      from_name: formData.nome,
-      from_email: formData.email,
-      telefone: formData.telefone,
-      empresa: formData.empresa,
-      investimento: formData.investimento || 'Não informado',
-      subject: 'Nova Solicitação de Chatbot - Landing Page',
-      mensagem: `Nova solicitação de chatbot através da landing page:
+    try {
+      // Obter URL da API
+      const apiUrl = getApiUrl();
+      
+      // Enviar dados para o backend
+      const response = await fetch(`${apiUrl}/contact/landing`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          telefone: formData.telefone,
+          empresa: formData.empresa,
+          investimento: formData.investimento || ''
+        })
+      });
 
-Nome: ${formData.nome}
-Email: ${formData.email}
-Telefone: ${formData.telefone}
-Empresa: ${formData.empresa}
-Investimento disponível: ${formData.investimento || 'Não informado'}
+      const data = await response.json();
 
-O interessado quer saber mais sobre os planos e como começar.`
-    };
-    
-    // Enviar email
-    emailjs.send(serviceID, templateID, templateParams, userID)
-      .then((response: any) => {
-        console.log('Email enviado com sucesso!', response.status, response.text);
+      if (data.success) {
+        console.log('Email enviado com sucesso!', data);
         alert('Obrigado pelo interesse! Seus dados foram enviados com sucesso. Entraremos em contato em breve.');
         // Limpar formulário
         setFormData({
@@ -651,11 +645,13 @@ O interessado quer saber mais sobre os planos e como começar.`
           empresa: '',
           investimento: ''
         });
-      })
-      .catch((error: any) => {
-        console.error('Erro ao enviar email:', error);
-        alert('Desculpe, ocorreu um erro ao enviar seus dados. Por favor, tente novamente ou entre em contato pelo WhatsApp.');
-      });
+      } else {
+        throw new Error(data.message || 'Erro ao enviar dados');
+      }
+    } catch (error: any) {
+      console.error('Erro ao enviar email:', error);
+      alert('Desculpe, ocorreu um erro ao enviar seus dados. Por favor, tente novamente ou entre em contato pelo WhatsApp.');
+    }
   };
 
   const benefits = [

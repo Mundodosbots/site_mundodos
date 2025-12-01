@@ -29,6 +29,7 @@ const pabblyRoutes = require('./routes/pabbly');
 const localAutomationRoutes = require('./routes/localAutomation');
 const settingsRoutes = require('./routes/settings');
 const usersRoutes = require('./routes/users');
+const contactRoutes = require('./routes/contact');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -135,6 +136,7 @@ app.use('/api/pabbly', pabblyRoutes);
 app.use('/api/local-automation', localAutomationRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/contact', contactRoutes);
 
 // =====================================================
 // MIDDLEWARE DE ERRO

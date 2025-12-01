@@ -227,12 +227,6 @@ const Header: React.FC = () => {
           </NavItem>
 
           <NavItem>
-            <NavLink to="/landing">
-              {t('header.landingPage')}
-            </NavLink>
-          </NavItem>
-
-          <NavItem>
             <NavLink to="/servicos">
               {t('header.solutions')} <FiChevronDown />
             </NavLink>
@@ -316,9 +310,6 @@ const Header: React.FC = () => {
           >
             <MobileNavItem>
               <Link to="/">{t('header.home')}</Link>
-            </MobileNavItem>
-            <MobileNavItem>
-              <Link to="/landing">{t('header.landingPage')}</Link>
             </MobileNavItem>
             <MobileNavItem>
               <Link to="/servicos">{t('header.solutions')}</Link>

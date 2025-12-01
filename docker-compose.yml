@@ -16,7 +16,7 @@ services:
       # JWT
       - JWT_SECRET=b9350900c274684a573a6268857088fd24168383a442f96d91f925139aa60321
       - JWT_EXPIRE=7d
-      # CORS - Aceitar requisições do site
+      # CORS
       - CORS_ORIGIN=https://site.mundodosbots.com.br
       # Rate Limiting
       - RATE_LIMIT_WINDOW=15
@@ -37,6 +37,13 @@ services:
       - PABBLY_DEFAULT_CAMPAIGN=mundodosbots
       - PABBLY_BLOG_CAMPAIGN=blog_automation
       - PABBLY_PROMOTIONAL_CAMPAIGN=promotional
+      # EMAIL - Configuração SMTP
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=mundodosbots@gmail.com
+      - SMTP_PASS=ytcvevubfzwrpcrn
+      - EMAIL_FROM=noreply@mundodosbots.com.br
+      - CONTACT_EMAIL=gelson@mundodosbots.com.br
     volumes:
       - backend_uploads:/app/uploads
       - backend_data:/app/data
@@ -45,15 +52,7 @@ services:
     dns:
       - 8.8.8.8
       - 8.8.4.4
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.mundodosbots-api.rule=Host(`api.mundodosbots.com.br`)
-      - traefik.http.routers.mundodosbots-api.entrypoints=websecure
-      - traefik.http.routers.mundodosbots-api.priority=1
-      - traefik.http.routers.mundodosbots-api.tls.certresolver=letsencryptresolver
-      - traefik.http.routers.mundodosbots-api.service=mundodosbots-api
-      - traefik.http.services.mundodosbots-api.loadbalancer.server.port=6010
-      - traefik.http.services.mundodosbots-api.loadbalancer.passHostHeader=true
+    
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:6010/health"]
       interval: 30s
@@ -62,6 +61,15 @@ services:
       start_period: 40s
     deploy:
       replicas: 1
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.mundodosbots-api.rule=Host(`api.mundodosbots.com.br`)
+      - traefik.http.routers.mundodosbots-api.entrypoints=websecure
+      - traefik.http.routers.mundodosbots-api.priority=1
+      - traefik.http.routers.mundodosbots-api.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.mundodosbots-api.service=mundodosbots-api
+      - traefik.http.services.mundodosbots-api.loadbalancer.server.port=6010
+      - traefik.http.services.mundodosbots-api.loadbalancer.passHostHeader=true
       resources:
         limits:
           cpus: '1'
@@ -88,15 +96,7 @@ services:
       - REACT_APP_API_URL=https://api.mundodosbots.com.br/api
     networks:
       - InconectNet
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.mundodosbots.rule=Host(`site.mundodosbots.com.br`)
-      - traefik.http.routers.mundodosbots.entrypoints=websecure
-      - traefik.http.routers.mundodosbots.priority=1
-      - traefik.http.routers.mundodosbots.tls.certresolver=letsencryptresolver
-      - traefik.http.routers.mundodosbots.service=mundodosbots
-      - traefik.http.services.mundodosbots.loadbalancer.server.port=4010
-      - traefik.http.services.mundodosbots.loadbalancer.passHostHeader=true
+    
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4010/"]
       interval: 30s
@@ -105,6 +105,15 @@ services:
       start_period: 40s
     deploy:
       replicas: 1
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.mundodosbots.rule=Host(`mundodosbots.com.br`)
+      - traefik.http.routers.mundodosbots.entrypoints=websecure
+      - traefik.http.routers.mundodosbots.priority=1
+      - traefik.http.routers.mundodosbots.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.mundodosbots.service=mundodosbots
+      - traefik.http.services.mundodosbots.loadbalancer.server.port=4010
+      - traefik.http.services.mundodosbots.loadbalancer.passHostHeader=true
       resources:
         limits:
           cpus: '0.5'
@@ -122,8 +131,9 @@ services:
         failure_action: rollback
 
 networks:
-  InconectNet:
+  InconectNet: ## Nome da rede interna
     external: true
+    name: InconectNet ## Nome da rede interna
 
 volumes:
   backend_uploads:
